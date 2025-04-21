@@ -14,7 +14,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 # → 4) Copy just your lockfiles first (cacheable layer)
 WORKDIR /app
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 
 # → 5) Sync dependencies (creates and populates a venv)
 RUN uv sync
