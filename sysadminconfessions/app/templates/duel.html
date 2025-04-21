@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Pass Judgement — Confess.sh</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+
+<body>
+
+    <!-- Banner -->
+    <section class="banner big-banner">
+        <h1>PASS JUDGEMENT</h1>
+        <h3>On the Most Infamous Sins</h3>
+    </section>
+    <!-- Global Nav (same on every page) -->
+    {% include 'nav.html' %}
+
+
+    <main>
+
+        <!-- System explanation -->
+        <section class="duel-intro">
+            <p>Each time you choose a sin, it earns a “win” — the more wins, the more shameful its legend.</p>
+            <h3>Decide which confession deserves the crown of infamy.</h3>
+            <hr/>
+        </section>
+
+        <!-- HTMX modal placeholder -->
+        <div id="modal"></div>
+
+        <!-- Two‑column showdown -->
+        <div class="duel-container">
+            {% for side, conf in (('a',a),('b',b)) %}
+            <div class="duel-card">
+                <div class="confession">
+                    [ #{{ conf.id }} | {{ conf.created_at.strftime("%Y-%m-%d %H:%M") }} ]
+                    <br/>
+                    {{ conf.content }}
+                </div>
+                <p>🏅 {{ conf.score }} wins</p>
+                <form hx-post="/duel/vote" hx-target="#modal" hx-swap="outerHTML">
+                    <input type="hidden" name="winner_id" value="{{ conf.id }}" />
+                    <input type="hidden" name="loser_id" value="{{ (b.id if side=='a' else a.id) }}" />
+                    <button type="submit">⚖️ More Shameful</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+
+    </main>
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>View — Confess.sh</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+</head>
+
+<body>
+
+    <!-- Banner -->
+    <section class="banner big-banner">
+        <h1>CONFESS.SH</h1>
+        <h3>View Past Confessions</h3>
+    </section>
+    {% include 'nav.html' %}
+
+    <main>
+
+        <!-- Sorting -->
+        <section class="sorting">
+            <h3>Sort By</h3>
+            <p>
+                <a href="/view?sort=recent" {% if sort=='recent' %}class="active" {% endif %}>🆕 New</a> |
+                <a href="/view?sort=top" {% if sort=='top' %}class="active" {% endif %}>🏆 Top</a> |
+                <a href="/view?sort=random" {% if sort=='random' %}class="active" {% endif %}>❓ Random</a>
+            </p>
+        </section>
+
+        <hr />
+
+        <!-- Confession List -->
+        <section class="list">
+            {% for confession in confessions %}
+            <div class="confession">
+                [ #{{ confession.id }} | {{ confession.created_at.strftime("%Y-%m-%d") }} ]
+                <br/>
+                {{ confession.content }}
+            </div>
+            <p>🏅 {{ confession.score }} wins</p>
+            <hr />
+            {% endfor %}
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if has_prev %}
+            <a href="/view?page={{ page-1 }}&sort={{ sort }}">← Previous</a>
+            {% else %}
+            <span></span>
+            {% endif %}
+            {% if has_next %}
+            <a href="/view?page={{ page+1 }}&sort={{ sort }}">Next →</a>
+            {% else %}
+            <span></span>
+            {% endif %}
+        </div>
+
+    </main>
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

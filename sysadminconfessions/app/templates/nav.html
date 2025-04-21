@@ -1,0 +1,6 @@
+<nav class="page-nav">
+    <a href="/" {% if request.url.path=="/" %}class="active" {% endif %}>✍️ Submit</a>
+    <a href="/view" {% if request.url.path.startswith("/view") %}class="active" {% endif %}>📜 View</a>
+    <a href="/duel" {% if request.url.path.startswith("/duel") %}class="active" {% endif %}>⚖️ Judgement</a>
+    <a href="/about" {% if request.url.path=="/about" %}class="active" {% endif %}>❓ About</a>
+</nav>

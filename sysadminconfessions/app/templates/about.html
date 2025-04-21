@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>About — Confess.sh</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+</head>
+
+<body>
+
+    <!-- Banner -->
+    <section class="banner big-banner">
+        <h1>CONFESS.SH</h1>
+    </section>
+    {% include 'nav.html' %}
+
+    <main>
+
+        <h3><strong>Confess.sh</strong> is a tongue-in-cheek confessional booth for all your tech mishaps.</h3>
+
+        <section class="about-content">
+            <section class="intro-body">
+                <p>You are not stupid. You are not alone.</p>
+                <p>You're just a sysadmin/dev/hacker/human… who once brought down staging with an <code>scp</code> typo.
+                </p>
+                <p>This is a shared space to confess, reflect, and—most importantly—laugh at ourselves.</p>
+                <p>Because nothing kills imposter syndrome faster than realizing <strong>we’ve all messed up
+                        spectacularly</strong>.</p>
+                <p><em>So go ahead. Tell us what you did. We promise to roast you just a little.</em></p>
+            </section>
+    </main>
+
+
+    {% include 'footer.html' %}
+</body>
+
+</html>

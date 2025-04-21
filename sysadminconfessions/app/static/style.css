@@ -1,0 +1,304 @@
+/* static/style.css */
+
+/* 1. Make all elements include padding/border in their width */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* -- Dark mode base -- */
+:root {
+  --bg:      #121212;
+  --fg:      #e0e0e0;
+  --accent:  #0f0;
+  --border:  #333;
+  --card-bg: #1e1e1e;
+}
+
+/* overall page */
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: monospace;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  line-height: 1.6;
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* container */
+main {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+/* header banner */
+pre.banner {
+  background: var(--card-bg);
+  color: var(--accent);
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+/* form */
+form {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+textarea {
+  width: 100%;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background: var(--card-bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  resize: vertical;
+}
+button {
+  font-family: monospace;
+  font-size: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  display: inline-block;
+  min-width: 4em;
+}
+button:hover {
+  background: #0c0;
+}
+
+/* confession “card” */
+div.confession {
+  text-align: left;          /* ← force left justification */
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  background: var(--card-bg);
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  overflow-x: hidden;
+}
+
+/* upvote form inline */
+form.upvote {
+  display: inline;
+  margin-left: 0.5rem;
+}
+
+/* links */
+a {
+  color: #66aaff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* divider */
+hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+/* pagination container */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 2rem 0 1rem;
+  flex-wrap: wrap;
+}
+.pagination a {
+  flex: 1 1 45%;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* responsive tweaks */
+@media (max-width: 600px) {
+  body {
+    padding: 0.5rem;
+  }
+  pre.banner {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 0.9rem;
+  }
+}
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal content box */
+.modal-content {
+  background: var(--card-bg);
+  color: var(--fg);
+  padding: 2rem;
+  border-radius: 6px;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* Modal action buttons */
+.modal-content .button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  font-family: monospace;
+  text-decoration: none;
+  display: inline-block;
+}
+.modal-content .button:hover {
+  background: #0c0;
+}
+
+
+/* Intro section */
+.intro {
+  background: #1a1a1a;
+  border-left: 4px solid var(--accent);
+  padding: 1.5rem 1.25rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+}
+
+.intro p {
+  margin-bottom: 1rem;
+}
+
+.intro strong {
+  font-size: 1.2em;
+  color: var(--accent);
+}
+
+.intro em {
+  color: #aaa;
+  font-style: italic;
+}
+
+.intro code {
+  background: #111;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+  color: #ffea80;
+}
+
+.intro-title {
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.intro-highlight {
+  background: #111;
+  border-left: 4px solid var(--accent);
+  padding: 1.5rem 1.25rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.intro-highlight .intro-title {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.intro-highlight p {
+  font-size: 1.1rem;
+  color: #0f0;
+  margin: 0.5rem 0;
+}
+
+.intro-body {
+  background: #1a1a1a;
+  padding: 1.5rem 1.25rem;
+  border-radius: 6px;
+  border-left: 4px solid #333;
+}
+
+.intro-body p {
+  margin-bottom: 1rem;
+  color: var(--fg);
+}
+
+.intro-body em {
+  color: #aaa;
+  font-style: italic;
+}
+
+.intro-body code {
+  background: #111;
+  color: #ffea80;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+
+
+.big-banner {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  background: #1b1b1b;
+  padding: 0.5rem;
+  color: var(--accent);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 2rem;
+}
+
+.site-footer p {
+  margin: 0.3rem 0;
+}
+
+.site-footer a {
+  color: var(--fg);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+

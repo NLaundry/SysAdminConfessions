@@ -1,0 +1,27 @@
+# Byte‑compiled / optimized / DLL files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite database file
+confessions.db
+*.db
+
+# uv lockfile
+uv.lock
+
+# Virtualenvs
+.venv/
+env/
+venv/
+
+# Environment variables
+.env
+
+# IDE/editor
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Confess.sh</title>
+  <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+</head>
+<body>
+
+<pre class="banner big-banner">
+┌────────────────────────────────────────────────────┐
+│                    CONFESS.SH                      │
+│    A Safe Space to Confess Your Tech Blunders      │
+
+      <p><strong>{{ total }}</strong> past sins, just like yours, have been confessed.</p>
+└────────────────────────────────────────────────────┘
+</pre>
+{% include 'nav.html' %}
+
+  <main>
+    <!-- Confession Form -->
+    <section id="submit">
+      <h2>Unburden Your Soul</h2>
+      <p>Confess your mistake, and be freed of its weight.</p>
+      <form method="POST" action="/submit">
+        <textarea
+          name="content"
+          rows="4"
+          placeholder="I once rebooted prod instead of staging…"
+        ></textarea><br/>
+        <button type="submit">sudo confess</button>
+      </form>
+    </section>
+
+    <hr/>
+
+
+  </main>
+    {% include 'footer.html' %}
+
+</body>
+</html>
